@@ -17,10 +17,8 @@ function sumOfTwoDigits(num) {
 
 function secondLargest(num1, num2, num3) {
     var array = [num1, num2, num3]
-    var firstmax = Math.max.apply(null, array)
-    array.splice(array.indexOf(firstmax), 1)
-    var secondmax = Math.max.apply(null, array)
-    return secondmax;
+    var sortedArray = array.sort()
+    return sortedArray[1];
 
 }
 
@@ -61,6 +59,13 @@ function lapindromeFind(str) {
     if (length % 2 === 0) {
         let firstWord = str.substring(0, length / 2)
         let secondWord = str.substring((length / 2), length)
+        let target1 = firstWord.toLowerCase().split('').sort().join('')
+        let target2 = secondWord.toLowerCase().split('').sort().join('')
+        return target1 === target2;
+    } else if (length % 2 !== 0) {
+
+        let firstWord = str.substring(0, (length / 2))
+        let secondWord = str.substring((length / 2) + 1, length)
         let target1 = firstWord.toLowerCase().split('').sort().join('')
         let target2 = secondWord.toLowerCase().split('').sort().join('')
         return target1 === target2;
